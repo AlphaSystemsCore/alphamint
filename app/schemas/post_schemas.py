@@ -4,6 +4,7 @@ from uuid import UUID
 from typing import Literal
 
 from enum import Enum
+
 class By(str, Enum):
     created_at: "created_at"
     title = "title"
@@ -45,7 +46,6 @@ class PostFiltersOthers(BaseModel):
 
 
 class SortOptions(BaseModel):
-    by: By = By.created_at
     direction: Literal["asc", "desc"] = "desc"
 
 
@@ -55,14 +55,9 @@ class PostSearchOthers(BaseModel):
     pagination: Pagination = Pagination()
 
 
-class PostFiltersOwner(BaseModel):
-    author: str | None = None
-    title: str | None = None
-    content_id: UUID | None = None
+class PostFiltersOwner(PostFiltersOthers):
     status: Literal["drafted", "published"] | None = None
-    created_after: date | None = None
-    created_before: date| None = None
-
+   
 class PostSearchOwner(BaseModel):
     filters: PostFiltersOwner = PostFiltersOwner()
     sort: SortOptions = SortOptions()

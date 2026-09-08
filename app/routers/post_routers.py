@@ -6,7 +6,7 @@ from uuid import UUID
 from app.auth.jwt_handler import get_current_user
 from app.services.post_service import *
 from app.exceptions.post_exception import BlogException
-from app.schemas.post_schemas import *
+from app.schemas.post_schemas import PostFiltersOthers, SortOptions, PostFiltersOthers, Pagination
 
 
 
